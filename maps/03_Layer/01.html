@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<script type="text/javascript" src="../lib/leaflet.js"></script>
+		<link rel="stylesheet" type="text/css" href="../lib/leaflet.css"/>
+		<style type="text/css">
+
+			#map{
+				width:500px;
+				height:500px;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<div id="map"></div>
+
+		<script type="text/javascript">
+
+			var map = L.map('map').setView([51.505, -0.09], 13);
+
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+
+			var group = L.layerGroup().addTo(map);
+
+			var polygon = L.polygon([
+				[51.509, -0.08],
+				[51.503, -0.06],
+				[51.51, -0.047]
+			]).addTo(group);
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<script type="text/javascript" src="../data/data.js"></script>
+		<style>
+			circle{
+				fill:black;
+				fill-opacity:0.5;
+			}
+
+			svg{
+				border:1px solid black;
+			}
+
+			.axis{
+				font-family: Arial;
+				font-size: 10px;
+			}
+
+			.axis path,
+			.axis line {
+				stroke-width:1px;	
+				fill: none;
+				stroke: #000;
+				shape-rendering: crispEdges;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			var svg = d3.select("body")
+				.append("svg")
+					.attr("width", 500)
+					.attr("height", 500);
+
+			var y = d3.scale.linear()
+				.domain([0,20])
+				.range([450, 50]);
+
+			var x = d3.scale.linear()
+				.domain([0,20])
+				.range([50, 450]);
+
+			var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient('bottom')
+				.tickSubdivide(true)
+				.tickSize(6,1)
+				.ticks(4);
+
+			svg.append('g')
+				.attr("transform", "translate(0,450)")
+				.attr('class', 'x axis')
+				.call(xAxis);
+
+			var yAxis = d3.svg.axis()
+				.scale(y)
+				.orient('left')
+				.tickSubdivide(true)
+				.tickSize(6,1)
+				.ticks(4);
+
+			svg.append('g')
+				.attr("transform", "translate(50,0)")
+				.attr('class', 'y axis')
+				.call(yAxis);
+
+			function update(j){
+				var circles = svg.selectAll("circle").data(data.data[j], function(d,i){ return i; });
+
+				circles.enter().append("circle");
+
+				circles.exit();
+
+				circles.transition().duration(100)
+					.attr("cx", function(d,i){ return x(d.x); })
+					.attr("cy", function(d,i){ return y(d.y); })
+					.attr("r", 5);
+			}
+
+			update(0);
+
+			var current = 1;
+
+			d3.select("body").append("div").text("change").on("click", function(){
+				update(current);
+				current++;
+				if(current>=data.data.length){
+					current = 0;
+				}
+			});
+
+		</script>
+	</body>
+</html>

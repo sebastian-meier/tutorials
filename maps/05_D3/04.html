@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.zipcode{
+	fill:#ff0000;
+}
+
+.zip94930{
+	/*fill:#ff0000;*/
+}
+
+</style>
+<body>
+<script src="../lib/d3.min.js"></script>
+<script src="../lib/topojson.v1.min.js"></script>
+<script>
+
+var width = 500,
+	height = 500;
+
+var r = 99, g = 106, b = 54, dr = 119, dg = 120, db = 119;
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width)
+	.attr("height", height);
+
+d3.json("../data/bayarea_zipcodes_topo.json", function(error, data) {
+	if (error) return console.error(error);
+
+	var projection = d3.geo.albers()
+		.center([0, 60.0])
+		.rotate([122,22, 0])
+		.parallels([50, 60])
+		.scale(15000)
+		.translate([width / 2, height / 2]);
+
+	var zipcodes = topojson.feature(data, data.objects.bayarea_zipcodes);
+
+	var path = d3.geo.path().projection(projection);
+
+	svg.append("path")
+		.datum(zipcodes)
+		.attr("d", path);
+
+	svg.selectAll(".zipcode")
+		.data(topojson.feature(data, data.objects.bayarea_zipcodes).features)
+		.enter().append("path")
+		.attr("class", function(d) { return "zipcode zip" + d.id; })
+		.style("fill", function(d) { 
+			var rand = Math.random();
+			console.log("rgba("+(r+rand*dr)+","+(g+rand*dg)+","+(b+rand*db)+",1)");
+			return "rgba("+Math.round(r+rand*dr)+","+Math.round(g+rand*dg)+","+Math.round(b+rand*db)+",1)"; 
+		})
+		.attr("d", path);
+
+});
+
+</script>

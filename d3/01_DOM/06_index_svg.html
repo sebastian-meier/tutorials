@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<style>
+			circle#circle{
+				fill:red;
+			}
+
+			rect#rect{
+				fill:blue;
+
+				stroke: black;
+				stroke-width: 3px;
+				stroke-dasharray: 3,5,10;
+			}
+		</style>
+	</head>
+	<body>
+
+		<svg width="200" height="200" style="border:1px solid black;">
+			<circle cx="40" cy="40" r="20" style="fill: red;" />
+			<rect x="80" y="80" width="20" height="20" style="fill: blue;" />
+		</svg>
+
+		<svg width="200" height="200" style="border:1px solid black;">
+			<circle id="circle" cx="40" cy="40" r="20" />
+			<rect id="rect" x="80" y="80" width="20" height="20" />
+		</svg>
+
+
+		<svg xmlns:svg="http://www.w3.org/2000/svg"
+		     xmlns="http://www.w3.org/2000/svg"
+		     version="1.0"
+		     width="220"
+		     height="220">
+		 <rect width="66" height="30" x="21" y="32" stroke="#204a87" stroke-width="2" fill="none" />
+		 <text x="21" y="82">Rechteck</text>
+		 <circle cx="144" cy="38" r="18" stroke="#4e9a06" stroke-width="2" fill="none" />
+		 <ellipse cx="170" cy="43" rx="27" ry="15" stroke="#73d216" stroke-width="2" fill="none" />
+		 <text x="122" y="81">Kreis + Ellipse</text>
+		 <path d="M 12,170 C 39,182 43,154 49,142 C 62,114 101,145 101,145"
+		       fill="#ef2929" fill-opacity="0.62" stroke="#a40000" stroke-width="2"/>
+		 <path d="M 149,109 L 149,127 L 127,144 L 140,172 L 188,167 L 191,119 L 149,109 z"
+		       fill="#edd400" fill-opacity="0.59" stroke="#c4a000" stroke-width="2" />
+		  <text x="35" y="192">Pfad</text>
+		  <text x="141" y="192">Polygon</text>
+		</svg> 
+
+	</body>
+</html>

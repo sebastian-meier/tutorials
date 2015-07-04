@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<script type="text/javascript" src="../data/data.js"></script>
+		<style>
+			circle{
+				fill:black;
+				fill-opacity:0.5;
+			}
+
+			.axis{
+				font-family: Arial;
+				font-size: 10px;
+			}
+
+			.axis path,
+			.axis line {
+				stroke-width:1px;	
+				fill: none;
+				stroke: #000;
+				shape-rendering: crispEdges;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			var easyData = [3,7,5,9,2,0,1,3,8,9,9,4,5,2,8,5,2,7,9];
+			var moreEasyData = [1,3,6,4,7,3,8,0,0,0,4,4,8,1,4,2,5,6,3];
+
+			var svg = d3.select("body")
+				.append("svg")
+					.attr("width", 500)
+					.attr("height", 500);
+
+			var y = d3.scale.linear()
+				.domain(d3.extent(easyData))
+				.range([50, 450]);
+
+			var x = d3.scale.linear()
+				.domain([0,easyData.length-1])
+				.range([50, 450]);
+
+			var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient('bottom')
+				.tickSubdivide(true)
+				.tickSize(6,1)
+				.ticks(4);
+
+			svg.append('g')
+				.attr("transform", "translate(0,30)")
+				.attr('class', 'x axis')
+				.call(xAxis);
+
+		</script>
+	</body>
+</html>

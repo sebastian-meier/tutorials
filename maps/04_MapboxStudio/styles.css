@@ -1,0 +1,39 @@
+Map {
+  background-color: #65cce0;
+}
+
+#bayarea_zipcodes::shadow{
+  line-color: rgb(0,0,0);
+  line-width: 10;
+  opacity:0.1;
+  line-join:round;
+  line-cap:round;
+  line-smooth:1;
+  image-filters: agg-stack-blur(5,5);
+}
+
+#bayarea_zipcodes {
+  line-width: 1;
+  line-color: rgb(100, 98, 88);
+  line-dasharray:3,2;
+  
+  polygon-fill: rgb(239, 232, 219);
+  [Area__ > 100000000]{ polygon-fill: rgb(210, 203, 189); }
+  [Area__ > 1000000000]{ polygon-fill: rgb(185, 178, 164); }
+  [Area__ > 10000000000]{ polygon-fill: rgb(153, 146, 132); }
+}
+
+#OGRGeoJSON {
+  marker-width:10;
+  marker-fill:#f45;
+  marker-line-color:#813;
+  marker-allow-overlap:true;
+  [zoom < 14]{ marker-width:10; }
+  [zoom < 13]{ marker-width:9; }
+  [zoom < 12]{ marker-width:8; }
+  [zoom < 11]{ marker-width:7; }
+  [zoom < 10]{ marker-width:6; }
+  [zoom < 9]{ marker-width:5; }
+  [zoom < 8]{ marker-width:4; }
+  [zoom < 7]{ marker-width:3; }
+}

@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<script type="text/javascript" src="../lib/leaflet.js"></script>
+		<link rel="stylesheet" type="text/css" href="../lib/leaflet.css"/>
+		<style type="text/css">
+
+			#map{
+				width:500px;
+				height:500px;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<div id="map"></div>
+
+		<script type="text/javascript">
+
+			//Create a Leaflet Map in the "#map" container
+			var map = L.map('map')
+				//Set the view at the center "[latitude, longitude]"
+				.setView([51.505, -0.09],
+				//At the zoom level 13
+				 13);
+
+				//Add a tile Layer (OSM)
+				//s = Server
+				//z = Zoom
+				//x = X-Axis
+				//y = Y-Axis
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+					//For most Tile Layers we need to add copyright information
+					attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+				//Add the layer to the map
+				}).addTo(map);
+
+		</script>
+	</body>
+</html>

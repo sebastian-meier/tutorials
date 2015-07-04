@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<script type="text/javascript" src="../data/data.js"></script>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			var x = d3.time.scale()
+				.domain([
+					new Date(Date.parse('2014-11-01')),
+					new Date(Date.parse('2014-11-30'))
+				])
+				.range([0, 200]);
+
+			console.log(x(new Date(Date.parse('2014-11-15'))));
+
+		</script>
+	</body>
+</html>

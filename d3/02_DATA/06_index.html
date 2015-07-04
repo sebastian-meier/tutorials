@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+		<script type="text/javascript" src="../data/data.js"></script>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			var ordinalData = [
+				{student:"Albert", grade:2},
+				{student:"Clara", grade:1},
+				{student:"Daniel", grade:3}
+			];
+
+			var x = d3.scale.ordinal()
+				.rangeRoundBands([0, 75])
+				.domain(ordinalData.map(function(d, i) {
+					return d.student;
+				})
+  			);
+
+			console.log(x(ordinalData[1].student));
+
+		</script>
+	</body>
+</html>

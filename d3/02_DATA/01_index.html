@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<script type="text/javascript" src="../lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="../lib/d3.min.js"></script>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+
+			d3.json("../data/data.json", function(error, json) {
+				if(error){
+					return console.warn(error);
+				}else{
+					console.log(json);
+					//... visualize the data
+				}
+			});
+
+		</script>
+	</body>
+</html>
